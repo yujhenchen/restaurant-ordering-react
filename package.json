@@ -1,0 +1,31 @@
+{
+  "name": "restaurant-ordering-react",
+  "version": "1.0.0",
+  "description": "React project with JavaScript and UnoCss",
+  "main": "src/index.js",
+  "repository": "https://github.com/yujhenchen/restaurant-ordering-react.git",
+  "author": "yujhen.chen93@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "dev": "react-scripts start && npx tailwindcss -i ./src/styles.css -o ./dist/output.css --watch",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.23.4",
+    "tailwindcss": "^3.3.6"
+  }
+}
