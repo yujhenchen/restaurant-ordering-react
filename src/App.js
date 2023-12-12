@@ -4,10 +4,22 @@ import Header from "./components/Header";
 import ItemCard from "./components/ItemCard";
 import OrderSummary from "./components/OrderSummary";
 import Section from "./components/Section";
+import { useMemo, useState } from "react";
 
 export default function App() {
+  const menuItems = useMemo(() => menuArray, [menuArray]);
+
+  const [addedItems, setAddedItems] = useState([]);
+
   function onAddItem(itemID) {
-    console.log(`onAddItem ${itemID}`);
+    const newItem = menuItems.find((item) => item.id === itemID);
+    if (newItem) setAddedItems((items) => [...items, newItem]);
+    else
+      console.log(`Error: onAddItem: Cannot find the item with id ${itemID}`);
+  }
+
+  function onRemoveItem(itemID) {
+    setAddedItems((items) => items.filter((item) => item.id !== itemID));
   }
 
   return (
@@ -15,13 +27,13 @@ export default function App() {
       <Header />
 
       <Section customStyle="py-16 grid gap-10 overflow-auto flex-1">
-        {menuArray.map((item) => (
+        {menuItems.map((item) => (
           <ItemCard key={item.id} {...item} onAdd={onAddItem} />
         ))}
       </Section>
 
-      <Section customStyle="h-[320px]">
-        <OrderSummary items={[]} />
+      <Section customStyle="h-[320px] overflow-auto">
+        <OrderSummary items={addedItems} onRemoveItem={onRemoveItem} />
       </Section>
     </main>
   );

@@ -2,15 +2,27 @@ import { useMemo } from "react";
 import OrderSummaryItem from "./OrderSummaryItem";
 import Button from "./Button";
 
-export default function OrderSummary({ items }) {
+export default function OrderSummary({ items, onRemoveItem }) {
   const totalPrice = useMemo(
     () => items.reduce((total, item) => total + item.price, 0),
     [items]
   );
 
-  function onRemoveItem(itemID) {
-    console.log(`remove item ${itemID}`);
-  }
+  const groupItems = useMemo(() => {
+    const groupArr = [];
+    items.forEach((item) => {
+      let foundItem = groupArr.find(
+        (groupArrItem) => groupArrItem.id === item.id
+      );
+
+      if (foundItem) {
+        foundItem = { ...foundItem, qty: foundItem.qty++ };
+      } else {
+        groupArr.push({ ...item, qty: 1 });
+      }
+    });
+    return groupArr;
+  }, [items]);
 
   function handleCompleteOrder() {}
 
@@ -18,12 +30,12 @@ export default function OrderSummary({ items }) {
     <>
       <h1 className="text-[1.75rem]">Your Order</h1>
       <div>
-        {items.map((item) => (
+        {groupItems.map((item) => (
           <OrderSummaryItem key={item.id} {...item} onRemove={onRemoveItem} />
         ))}
       </div>
-      <hr />
-      <p className="text-[1.25rem]">
+      <hr className="my-4 border-1 border-[#0E0E0E]" />
+      <p className="text-[1.25rem] flex place-content-between py-2">
         <span>Total Price: </span>
         <span>${totalPrice}</span>
       </p>
