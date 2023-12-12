@@ -1,17 +1,21 @@
 import React, { useRef } from "react";
 import RoundedButton from "./RoundedButton";
 
-export default function Modal({ children }) {
-  const modalRef = useRef(null);
+export default function Modal({ children, open, onCloseModal }) {
+  /* const modalRef = useRef(null);
+  
+  useRef normally for referencing 3rd libs which are not written in React,
+  if it's about managing modal state can just use useState and pass down to the child component
 
   function onCloseModal() {
     if (modalRef) modalRef.current.close();
   }
+   */
 
   return (
     <dialog
-      ref={modalRef}
-      open
+      // ref={modalRef}
+      open={open}
       className="w-[524px] h-[524px] bg-white fixed top-1/2 -translate-y-1/2 margin-auto drop-shadow-4xl"
     >
       <div className="absolute top-4 right-4">

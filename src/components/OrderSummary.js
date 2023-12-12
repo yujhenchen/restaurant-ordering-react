@@ -1,10 +1,12 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import OrderSummaryItem from "./OrderSummaryItem";
 import Button from "./Button";
 import Modal from "./Modal";
 import CreditCardInfo from "./CreditCardInfo";
 
 export default function OrderSummary({ items, onRemoveItem }) {
+  const [openModal, setOpenModal] = useState(false);
+
   const totalPrice = useMemo(
     () => items.reduce((total, item) => total + item.price, 0),
     [items]
@@ -26,7 +28,9 @@ export default function OrderSummary({ items, onRemoveItem }) {
     return groupArr;
   }, [items]);
 
-  function handleCompleteOrder() {}
+  function handleCompleteOrder() {
+    setOpenModal((openState) => !openState);
+  }
 
   function onPay(event, ...cardData) {
     event.preventDefault();
@@ -48,7 +52,7 @@ export default function OrderSummary({ items, onRemoveItem }) {
         <span>${totalPrice}</span>
       </p>
       <Button text="Complete Order" onCLick={handleCompleteOrder} />
-      <Modal>
+      <Modal open={openModal} onCloseModal={handleCompleteOrder}>
         <CreditCardInfo onPay={onPay} />
       </Modal>
       {/* forward ref to child to open modal and close modal inside? */}
