@@ -32,7 +32,7 @@ export default function App() {
         ))}
       </Section>
 
-      <Section customStyle="h-[320px] overflow-auto">
+      <Section customStyle="h-[320px] shadow-lg flex flex-col">
         <OrderSummary items={addedItems} onRemoveItem={onRemoveItem} />
       </Section>
     </main>

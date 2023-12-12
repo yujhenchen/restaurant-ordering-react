@@ -28,8 +28,8 @@ export default function OrderSummary({ items, onRemoveItem }) {
 
   return (
     <>
-      <h1 className="text-[1.75rem]">Your Order</h1>
-      <div>
+      <h1 className="text-[1.75rem] text-center">Your Order</h1>
+      <div className="overflow-auto">
         {groupItems.map((item) => (
           <OrderSummaryItem key={item.id} {...item} onRemove={onRemoveItem} />
         ))}
