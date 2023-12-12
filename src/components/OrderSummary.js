@@ -28,8 +28,10 @@ export default function OrderSummary({ items, onRemoveItem }) {
 
   function handleCompleteOrder() {}
 
-  function onPay(name, cardNumber, cvv) {
-    console.log(name + " " + cardNumber + " " + cvv);
+  function onPay(event, ...cardData) {
+    event.preventDefault();
+    const [name, cardNumber, cvc] = cardData;
+    console.log(name + " " + cardNumber + " " + cvc);
   }
 
   return (
