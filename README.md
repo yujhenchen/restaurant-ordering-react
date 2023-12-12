@@ -66,6 +66,11 @@ My solo project - Restaurant Ordering app.
 - [![FontAwesome][FontAwesome]][FontAwesome-url]
 - [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 
+- React Hooks
+    - useState
+    - useMemo
+    - useRef 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
