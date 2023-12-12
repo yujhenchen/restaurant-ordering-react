@@ -112,9 +112,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [ ] Test
+- [x] Add/ remove cart items
+- [x] Use amount for duplicated items in order summary
 - [ ] Bug fixes
-- [ ] Deploy dist/output.css not found
+    - [ ] Deploy dist/output.css not found
+    - [ ] Fixed the position of order summary title and complete order button
 
 See the [open issues](https://github.com/yujhenchen/restaurant-ordering-react/issues) for a full list of proposed features (and known issues).
 
