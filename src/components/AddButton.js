@@ -2,7 +2,7 @@ export default function AddButton({ onAdd, sizeClasses }) {
   return (
     <button
       onClick={onAdd}
-      className={`${sizeClasses} border-solid	rounded-full bg-white border`}
+      className={`${sizeClasses} border-solid	rounded-full bg-white border text-2xl`}
     >
       +
     </button>
