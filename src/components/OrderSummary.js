@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import OrderSummaryItem from "./OrderSummaryItem";
 import Button from "./Button";
+import Modal from "./Modal";
 
 export default function OrderSummary({ items, onRemoveItem }) {
   const totalPrice = useMemo(
@@ -26,6 +27,10 @@ export default function OrderSummary({ items, onRemoveItem }) {
 
   function handleCompleteOrder() {}
 
+  function onCloseModal() {
+    console.log("close modal");
+  }
+
   return (
     <>
       <h1 className="text-[1.75rem] text-center">Your Order</h1>
@@ -40,6 +45,7 @@ export default function OrderSummary({ items, onRemoveItem }) {
         <span>${totalPrice}</span>
       </p>
       <Button text="Complete Order" onCLick={handleCompleteOrder} />
+      <Modal onClose={onCloseModal} />
     </>
   );
 }

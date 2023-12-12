@@ -1,5 +1,5 @@
 import React from "react";
-import AddButton from "./AddButton";
+import RoundedButton from "./RoundedButton";
 
 export default function ItemCard({
   name,
@@ -17,9 +17,10 @@ export default function ItemCard({
         <p className="text-base">{ingredients.join(", ")}</p>
         <p className="text-base">${price}</p>
       </div>
-      <AddButton
-        onAdd={() => onAdd(id)}
+      <RoundedButton
+        onClick={() => onAdd(id)}
         sizeClasses="w-[50px] h-[50px] absolute right-px top-px"
+        text="+"
       />
       <hr />
     </div>
