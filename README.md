@@ -15,7 +15,7 @@
     <a href="https://github.com/yujhenchen/restaurant-ordering-react"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://jen-endorsements-pwa-firebase.netlify.app/" target=”_blank”>View Demo</a>
+    <a href="https://jen-restaurant-ordering.netlify.app" target=”_blank”>View Demo</a>
     ·
     <a href="https://github.com/yujhenchen/restaurant-ordering-react/issues">Report Bug</a>
     ·
@@ -113,6 +113,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap
 
 - [ ] Test
+- [ ] Bug fixes
+- [ ] Deploy dist/output.css not found
 
 See the [open issues](https://github.com/yujhenchen/restaurant-ordering-react/issues) for a full list of proposed features (and known issues).
 
