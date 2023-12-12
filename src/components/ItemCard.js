@@ -10,8 +10,8 @@ export default function ItemCard({
   onAdd,
 }) {
   return (
-    <div className="w-full relative">
-      <p className="text-[70px] inline-block align-top">{emoji}</p>
+    <div className="w-full relative bg-white">
+      <p className="text-[4.375rem] inline-block align-top">{emoji}</p>
       <div className="inline-block">
         <p className="text-2xl">{name}</p>
         <p className="text-base">{ingredients.join(", ")}</p>
