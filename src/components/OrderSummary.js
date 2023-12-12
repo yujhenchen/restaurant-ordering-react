@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import OrderSummaryItem from "./OrderSummaryItem";
 import Button from "./Button";
 import Modal from "./Modal";
+import CreditCardInfo from "./CreditCardInfo";
 
 export default function OrderSummary({ items, onRemoveItem }) {
   const totalPrice = useMemo(
@@ -27,6 +28,10 @@ export default function OrderSummary({ items, onRemoveItem }) {
 
   function handleCompleteOrder() {}
 
+  function onPay(name, cardNumber, cvv) {
+    console.log(name + " " + cardNumber + " " + cvv);
+  }
+
   return (
     <>
       <h1 className="text-[1.75rem] text-center">Your Order</h1>
@@ -41,7 +46,10 @@ export default function OrderSummary({ items, onRemoveItem }) {
         <span>${totalPrice}</span>
       </p>
       <Button text="Complete Order" onCLick={handleCompleteOrder} />
-      <Modal />
+      <Modal>
+        <CreditCardInfo onPay={onPay} />
+      </Modal>
+      {/* forward ref to child to open modal and close modal inside? */}
     </>
   );
 }

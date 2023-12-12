@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import RoundedButton from "./RoundedButton";
 
-export default function Modal() {
+export default function Modal({ children }) {
   const modalRef = useRef(null);
 
   function onCloseModal() {
@@ -21,6 +21,7 @@ export default function Modal() {
           text="x"
         />
       </div>
+      {children}
     </dialog>
   );
 }
