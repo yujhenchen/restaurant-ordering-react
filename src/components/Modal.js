@@ -12,9 +12,15 @@ export default function Modal() {
     <dialog
       ref={modalRef}
       open
-      className="w-[524px] h-[524px] bg-white fixed top-1/2 left-1/2 -translate-x-1/2	-translate-y-1/2 drop-shadow-2xl"
+      className="w-[524px] h-[524px] bg-white fixed top-1/2 -translate-y-1/2 margin-auto drop-shadow-4xl"
     >
-      <RoundedButton onClick={onCloseModal} sizeClasses="w-10 h-10" text="x" />
+      <div className="absolute top-4 right-4">
+        <RoundedButton
+          onClick={onCloseModal}
+          sizeClasses="w-10 h-10"
+          text="x"
+        />
+      </div>
     </dialog>
   );
 }
