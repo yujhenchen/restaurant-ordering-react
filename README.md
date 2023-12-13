@@ -69,7 +69,8 @@ My solo project - Restaurant Ordering app.
 - React Hooks
     - useState
     - useMemo
-    - useRef 
+    - useRef
+    - forwardRef
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -119,10 +120,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 - [x] Add/ remove cart items
 - [x] Use amount for duplicated items in order summary
-- [ ] Complete order popup modal
+- [x] Complete order popup modal
+- [x] Click outside close modal using useRef
 - [ ] Finish Order notification message
 - [ ] Bug fixes
     - [x] Fixed the position of order summary title and complete order button
+    - [ ] Pop up modal is not correct centered
     - [ ] Deploy dist/output.css not found
 
 See the [open issues](https://github.com/yujhenchen/restaurant-ordering-react/issues) for a full list of proposed features (and known issues).
@@ -133,9 +136,15 @@ See the [open issues](https://github.com/yujhenchen/restaurant-ordering-react/is
 
 ## Issues and solutions
 
-### Issue
+### Need to close modal when clicking outside of the modal while the modal is open
 
 #### Solution
+Forward ref in the child component use `forwardRef`
+
+`useEffect` to track the `mousedown` event of the document, and has the dependency of modal opening state
+
+clean up in `mousedown` event in useEffect
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -180,6 +189,8 @@ Project Link: [https://github.com/yujhenchen/restaurant-ordering-react](https://
 ## Acknowledgments
 
 - [Scrimba](https://scrimba.com/)
+- [forwardRef](https://react.dev/reference/react/forwardRef)
+- [How to detect click outside in a React component](https://dev.to/collegewap/how-to-detect-click-outside-in-a-react-component-2b6k)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

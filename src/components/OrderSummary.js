@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import OrderSummaryItem from "./OrderSummaryItem";
 import Button from "./Button";
 import Modal from "./Modal";
@@ -6,6 +6,21 @@ import CreditCardInfo from "./CreditCardInfo";
 
 export default function OrderSummary({ items, onRemoveItem }) {
   const [openModal, setOpenModal] = useState(false);
+
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", onMouseDown);
+    function onMouseDown(event) {
+      if (
+        openModal &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target)
+      ) {
+        setOpenModal(false);
+      }
+    }
+  }, [open]);
 
   const totalPrice = useMemo(
     () => items.reduce((total, item) => total + item.price, 0),
@@ -52,7 +67,7 @@ export default function OrderSummary({ items, onRemoveItem }) {
         <span>${totalPrice}</span>
       </p>
       <Button text="Complete Order" onCLick={handleCompleteOrder} />
-      <Modal open={openModal} onCloseModal={handleCompleteOrder}>
+      <Modal open={openModal} onCloseModal={handleCompleteOrder} ref={modalRef}>
         <CreditCardInfo onPay={onPay} />
       </Modal>
       {/* forward ref to child to open modal and close modal inside? */}
