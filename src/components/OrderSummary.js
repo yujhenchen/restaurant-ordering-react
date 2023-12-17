@@ -3,9 +3,12 @@ import OrderSummaryItem from "./OrderSummaryItem";
 import Button from "./Button";
 import Modal from "./Modal";
 import CreditCardInfo from "./CreditCardInfo";
+import Notification from "./Notification";
 
 export default function OrderSummary({ items, onRemoveItem }) {
   const [openModal, setOpenModal] = useState(false);
+  const [hasPayed, setHasPayed] = useState(false);
+  const [customerName, setCustomerName] = useState("");
 
   const modalRef = useRef(null);
 
@@ -50,10 +53,13 @@ export default function OrderSummary({ items, onRemoveItem }) {
   function onPay(event, ...cardData) {
     event.preventDefault();
     const [name, cardNumber, cvc] = cardData;
-    console.log(name + " " + cardNumber + " " + cvc);
+    setCustomerName(name);
+    setHasPayed(true);
   }
 
-  return (
+  return hasPayed ? (
+    <Notification text={`Thanks, ${customerName}! Your order is on its way!`} />
+  ) : (
     <>
       <h1 className="text-[1.75rem] text-center">Your Order</h1>
       <div className="overflow-auto">
@@ -66,7 +72,11 @@ export default function OrderSummary({ items, onRemoveItem }) {
         <span>Total Price: </span>
         <span>${totalPrice}</span>
       </p>
-      <Button text="Complete Order" onCLick={handleCompleteOrder} />
+      <Button
+        text="Complete Order"
+        onCLick={handleCompleteOrder}
+        disabled={items.length > 0 ? false : true}
+      />
       <Modal open={openModal} onCloseModal={handleCompleteOrder} ref={modalRef}>
         <CreditCardInfo onPay={onPay} />
       </Modal>

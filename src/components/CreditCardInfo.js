@@ -48,6 +48,7 @@ export default function CreditCardInfo({ onPay }) {
       <Button
         text="Pay"
         onCLick={(event) => onPay(event, name, cardNumber, cvc)}
+        disabled={false}
       />
     </form>
   );

@@ -69,7 +69,6 @@ My solo project - Restaurant Ordering app.
 - React Hooks
     - useState
     - useMemo
-    - useRef
     - forwardRef
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -122,7 +121,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Use amount for duplicated items in order summary
 - [x] Complete order popup modal
 - [x] Click outside close modal using useRef
-- [ ] Finish Order notification message
+- [x] Finish Order notification message
 - [ ] Bug fixes
     - [x] Fixed the position of order summary title and complete order button
     - [ ] Pop up modal is not correct centered
