@@ -9,6 +9,7 @@ export default function OrderSummary({ items, onRemoveItem }) {
   const [openModal, setOpenModal] = useState(false);
   const [hasPayed, setHasPayed] = useState(false);
   const [customerName, setCustomerName] = useState("");
+  const [showFormDataIncorrect, setShowFormDataIncorrect] = useState(false);
 
   const modalRef = useRef(null);
 
@@ -52,9 +53,22 @@ export default function OrderSummary({ items, onRemoveItem }) {
 
   function onPay(event, ...cardData) {
     event.preventDefault();
+    setShowFormDataIncorrect(false);
+
     const [name, cardNumber, cvc] = cardData;
-    setCustomerName(name);
-    setHasPayed(true);
+    const isValid = verifyForm(name, cardNumber, cvc);
+
+    if (isValid) {
+      setCustomerName(name);
+      setHasPayed(true);
+    } else {
+      setShowFormDataIncorrect(true);
+    }
+  }
+
+  function verifyForm(name, cardNumber, cvc) {
+    if (!name || !cardNumber || !cvc) return false;
+    else return true;
   }
 
   return hasPayed ? (
@@ -78,7 +92,10 @@ export default function OrderSummary({ items, onRemoveItem }) {
         disabled={items.length > 0 ? false : true}
       />
       <Modal open={openModal} onCloseModal={handleCompleteOrder} ref={modalRef}>
-        <CreditCardInfo onPay={onPay} />
+        <CreditCardInfo
+          onPay={onPay}
+          showFormIncorrect={showFormDataIncorrect}
+        />
       </Modal>
       {/* forward ref to child to open modal and close modal inside? */}
     </>

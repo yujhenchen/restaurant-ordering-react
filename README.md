@@ -122,9 +122,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Complete order popup modal
 - [x] Click outside close modal using useRef
 - [x] Finish Order notification message
+- [x] Form verification
 - [ ] Bug fixes
     - [x] Fixed the position of order summary title and complete order button
-    - [ ] Pop up modal is not correct centered
+    - [x] Pop up modal is not correct centered
     - [ ] Deploy dist/output.css not found
 
 See the [open issues](https://github.com/yujhenchen/restaurant-ordering-react/issues) for a full list of proposed features (and known issues).
