@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "react-scripts start && npx tailwindcss -i ./src/styles.css -o ./dist/output.css --watch",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npx tailwindcss -i ./src/styles.css -o ./dist/output.css",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
